@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "635930998421",
+    "project_id": "nkm-admin-panel",
+    "storage_bucket": "nkm-admin-panel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635930998421:android:059efeb371abff18f48d9c",
+        "android_client_info": {
+          "package_name": "com.org.nkm_admin_panel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635930998421-edkuvduhb6r2k5gtcgcg4e929jaur3hr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.org.nkm_admin_panel",
+            "certificate_hash": "2f6deeecdc018287519582a1634c41e9a7c10fd6"
+          }
+        },
+        {
+          "client_id": "635930998421-9meikgp40cfr3t1cl3bp8jjt5e43efmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy_0UCdIFg0MMWiloika7HAXt8waLIiKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635930998421-9meikgp40cfr3t1cl3bp8jjt5e43efmb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "635930998421-lmm8obqcvsnsf7ojtdeng8pqo61ne8c2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.org.nkmAdminPanel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
