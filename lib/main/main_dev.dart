@@ -16,7 +16,8 @@ Future<void> main() async {
   EnvConfig(
     envType: EnvTypeEnum.dev,
     appName: "NKM Admin Panel-Dev",
-    baseUrl: "http://3.6.39.35/api/",
+    baseUrl: "http://13.126.207.50/api/",
+    // baseUrl: "http://3.6.39.35/api/",
   );
   await PreferenceObj.init();
   if (PreferenceObj.getAuthToken.isNotEmpty) {

@@ -1,5 +1,3 @@
-import 'package:nkm_admin_panel/api/dio_client.dart';
-
 enum EnvTypeEnum { dev, prod }
 
 class EnvConfig {
@@ -11,8 +9,8 @@ class EnvConfig {
 
   EnvConfig._({
     this.envType = EnvTypeEnum.dev,
-    this.appName = "NKM Admin Panel",
-    this.baseUrl = "http://3.6.39.35/api/",
+    this.appName = "NKM Admin Panel-Dev",
+    this.baseUrl = "http://13.126.207.50/api/",
   });
 
   factory EnvConfig({
@@ -29,7 +27,6 @@ class EnvConfig {
   }
 
   static EnvConfig get instance {
-    DioClient dioClient = DioClient();
     return _instance!;
   }
 }
