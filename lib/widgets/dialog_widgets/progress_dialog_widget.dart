@@ -43,7 +43,7 @@ Stack progressWidget({
                   child: Text(
                     msg ?? 'please_wait'.tr,
                     style: TextStyle(
-                      fontSize: Get.textTheme.subtitle1!.fontSize,
+                      fontSize: Get.textTheme.titleSmall!.fontSize,
                     ),
                   ),
                 ),

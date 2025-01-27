@@ -442,9 +442,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
         HapticFeedback.vibrate();
         break;
 
-      default:
-        break;
-    }
+      }
   }
 
   // Assigning the text controller, if empty assiging a new one.
@@ -697,7 +695,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
                 text: TextSpan(
                   text: _dialogConfig.dialogContent,
                   style: TextStyle(
-                    color: Theme.of(context).textTheme.button!.color,
+                    color: Theme.of(context).textTheme.labelLarge?.color,
                   ),
                   children: [
                     TextSpan(
@@ -707,7 +705,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
                     TextSpan(
                       text: "?",
                       style: TextStyle(
-                        color: Theme.of(context).textTheme.button!.color,
+                        color: Theme.of(context).textTheme.labelLarge?.color,
                       ),
                     )
                   ],
@@ -724,7 +722,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
                 text: TextSpan(
                   text: _dialogConfig.dialogContent,
                   style: TextStyle(
-                      color: Theme.of(context).textTheme.button!.color),
+                      color: Theme.of(context).textTheme.labelLarge?.color),
                   children: [
                     TextSpan(
                       text: formattedPastedText,
@@ -733,7 +731,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
                     TextSpan(
                       text: " ?",
                       style: TextStyle(
-                        color: Theme.of(context).textTheme.button!.color,
+                        color: Theme.of(context).textTheme.labelLarge?.color,
                       ),
                     )
                   ],

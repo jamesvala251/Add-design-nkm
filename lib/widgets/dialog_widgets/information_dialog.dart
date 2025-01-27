@@ -20,7 +20,6 @@ AlertDialog informationDialog({
             title,
             style: TextStyle(
               color: Colors.black,
-              fontSize: Get.textTheme.headline6!.fontSize,
             ),
           ),
     content: Text(
@@ -33,7 +32,7 @@ AlertDialog informationDialog({
         child: Text(
           "Okay",
           style: TextStyle(
-            fontSize: Get.textTheme.button!.fontSize,
+            fontSize: Get.textTheme.labelLarge?.fontSize,
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),

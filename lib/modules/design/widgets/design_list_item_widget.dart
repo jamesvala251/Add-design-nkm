@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:nkm_admin_panel/config/routes/app_routes.dart';
-import 'package:nkm_admin_panel/custom_libs/flutter_slidable/flutter_slidable.dart';
 import 'package:nkm_admin_panel/custom_libs/spin_kit/spinning_lines.dart';
 import 'package:nkm_admin_panel/modules/design/controllers/design_list_controller.dart';
 import 'package:nkm_admin_panel/modules/design/models/design_list_model.dart'
@@ -27,7 +27,7 @@ class DesignListItemWidget extends StatelessWidget {
         vertical: 8,
       ),
       child: Slidable(
-        rowWidth: Get.width - 32,
+        // rowWidth: Get.width - 32,
         closeOnScroll: true,
         useTextDirection: true,
         endActionPane: ActionPane(

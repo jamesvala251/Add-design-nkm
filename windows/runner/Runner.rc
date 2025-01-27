@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "nkm_admin_panel" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "nkm_admin_panel" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.org. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.org. All rights reserved." "\0"
             VALUE "OriginalFilename", "nkm_admin_panel.exe" "\0"
             VALUE "ProductName", "nkm_admin_panel" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

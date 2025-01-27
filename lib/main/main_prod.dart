@@ -8,7 +8,7 @@ import 'package:nkm_admin_panel/config/env/env_config.dart';
 import 'package:nkm_admin_panel/firebase_options.dart';
 import 'package:nkm_admin_panel/modules/design/controllers/common_controller.dart';
 import 'package:nkm_admin_panel/modules/design/controllers/design_list_controller.dart';
-import 'package:nkm_admin_panel/root_widget.dart';
+import 'package:nkm_admin_panel/root_widget.dart' as root_widget;
 import 'package:nkm_admin_panel/utils/helpers/preference_obj.dart';
 
 Future<void> main() async {
@@ -36,7 +36,7 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]).then(
     (_) async {
-      runApp(const RootWidget());
+      runApp(const root_widget.RootWidget());
     },
   );
 }
