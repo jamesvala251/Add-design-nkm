@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_thumbnail_video/index.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 import 'package:nkm_admin_panel/config/routes/app_routes.dart';
 import 'package:nkm_admin_panel/constants/route_constants.dart';
 import 'package:nkm_admin_panel/custom_libs/spin_kit/spinning_lines.dart';
@@ -15,7 +17,6 @@ import 'package:nkm_admin_panel/utils/ui/app_dialogs.dart';
 import 'package:nkm_admin_panel/utils/ui/common_style.dart';
 import 'package:nkm_admin_panel/utils/ui/max_value_text_input_formatter.dart';
 import 'package:nkm_admin_panel/utils/ui/ui_utils.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:path/path.dart' as path;
 
 class AddDesignScreen extends StatefulWidget {
@@ -666,7 +667,7 @@ class _AddDesignScreenState extends State<AddDesignScreen> {
                                         return Stack(
                                           children: [
                                             Image.file(
-                                              File(snapShot.data ?? ''),
+                                              File(snapShot.data?.path ?? ''),
                                             ),
                                             const Center(
                                               child: Icon(

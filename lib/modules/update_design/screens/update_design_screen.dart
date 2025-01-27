@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_thumbnail_video/index.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 import 'package:nkm_admin_panel/config/routes/app_routes.dart';
 import 'package:nkm_admin_panel/constants/route_constants.dart';
 import 'package:nkm_admin_panel/custom_libs/spin_kit/spinning_lines.dart';
@@ -16,7 +18,7 @@ import 'package:nkm_admin_panel/utils/ui/app_dialogs.dart';
 import 'package:nkm_admin_panel/utils/ui/common_style.dart';
 import 'package:nkm_admin_panel/utils/ui/max_value_text_input_formatter.dart';
 import 'package:nkm_admin_panel/utils/ui/ui_utils.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
+// import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:path/path.dart' as path;
 
 class UpdateDesignScreen extends StatefulWidget {
@@ -838,52 +840,52 @@ class _UpdateDesignScreenState extends State<UpdateDesignScreen> {
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
-                                            child: FutureBuilder(
-                                              future:
-                                                  VideoThumbnail.thumbnailFile(
-                                                video: _updateDesignController
-                                                    .updateDesignVideoModelList[
-                                                        index]
-                                                    .videoPath,
-                                                imageFormat: ImageFormat.JPEG,
-                                              ),
-                                              builder: (ctx, snapShot) {
-                                                if (snapShot.connectionState ==
-                                                    ConnectionState.waiting) {
-                                                  return Center(
-                                                    child: SpinKitSpinningLines(
-                                                      color: Get
-                                                          .theme.primaryColor,
-                                                      size: 30,
-                                                    ),
-                                                  );
-                                                }
-
-                                                if (snapShot.data == null) {
-                                                  return const Center(
-                                                    child: Icon(
-                                                      Icons.error_rounded,
-                                                      color: Colors.red,
-                                                    ),
-                                                  );
-                                                }
-                                                return Stack(
-                                                  children: [
-                                                    Image.file(
-                                                      File(snapShot.data ?? ''),
-                                                    ),
-                                                    const Center(
-                                                      child: Icon(
-                                                        Icons
-                                                            .play_circle_fill_rounded,
-                                                        color: Colors.white,
-                                                        size: 24,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ),
+                                             child: Text('test')// FutureBuilder(
+                                            //   future:
+                                            //       VideoThumbnail.thumbnailFile(
+                                            //     video: _updateDesignController
+                                            //         .updateDesignVideoModelList[
+                                            //             index]
+                                            //         .videoPath,
+                                            //     imageFormat: ImageFormat.JPEG,
+                                            //   ),
+                                            //   builder: (ctx, snapShot) {
+                                            //     if (snapShot.connectionState ==
+                                            //         ConnectionState.waiting) {
+                                            //       return Center(
+                                            //         child: SpinKitSpinningLines(
+                                            //           color: Get
+                                            //               .theme.primaryColor,
+                                            //           size: 30,
+                                            //         ),
+                                            //       );
+                                            //     }
+                                            //
+                                            //     if (snapShot.data == null) {
+                                            //       return const Center(
+                                            //         child: Icon(
+                                            //           Icons.error_rounded,
+                                            //           color: Colors.red,
+                                            //         ),
+                                            //       );
+                                            //     }
+                                            //     return Stack(
+                                            //       children: [
+                                            //         Image.file(
+                                            //           File(snapShot.data ?? ''),
+                                            //         ),
+                                            //         const Center(
+                                            //           child: Icon(
+                                            //             Icons
+                                            //                 .play_circle_fill_rounded,
+                                            //             color: Colors.white,
+                                            //             size: 24,
+                                            //           ),
+                                            //         ),
+                                            //       ],
+                                            //     );
+                                            //   },
+                                            // ),
                                           ),
                                         ),
                                         Positioned(
