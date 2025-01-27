@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nkm_admin_panel/config/env/env_config.dart';
-import 'package:nkm_admin_panel/firebase_options.dart';
+import 'package:nkm_admin_panel/firebase_options_dev.dart';
 import 'package:nkm_admin_panel/modules/design/controllers/common_controller.dart';
 import 'package:nkm_admin_panel/modules/design/controllers/design_list_controller.dart';
 import 'package:nkm_admin_panel/root_widget.dart' as root_widget;
@@ -25,7 +25,7 @@ Future<void> main() async {
     Get.put(DesignListController(), permanent: true);
   }
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptionsForDev.currentPlatform,
   );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(

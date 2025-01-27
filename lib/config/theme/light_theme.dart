@@ -3,7 +3,7 @@ import 'package:nkm_admin_panel/constants/common_constants.dart';
 import 'package:nkm_admin_panel/utils/helpers/material_color_generator.dart';
 
 ThemeData lightTheme = ThemeData(
-  // useMaterial3: true,
+  useMaterial3: false,
   colorScheme: const ColorScheme.light(
     primary: Color(0xFF44062C),
     primaryContainer: Color(0xFF44062C),
