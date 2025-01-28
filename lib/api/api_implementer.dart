@@ -199,7 +199,11 @@ class ApiImplementer {
 
       for (int index = 0; index < updateDesignHallmarkModelList.length; index++) {
         requestJson.putIfAbsent(
-          'design_weight[$index][hallmark]',
+          'design_hallmark[$index][id]',
+              () => updateDesignHallmarkModelList[index].id,
+        );
+        requestJson.putIfAbsent(
+          'design_hallmark[$index][hallmark_number]',
               () => updateDesignHallmarkModelList[index].hallmark.value,
         );
       }

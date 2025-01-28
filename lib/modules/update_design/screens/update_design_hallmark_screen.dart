@@ -57,7 +57,6 @@ class _UpdateDesignHallmarkScreenState extends State<UpdateDesignHallmarkScreen>
                       textCapitalization: TextCapitalization.words,
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.text,
-                      maxLength: 7,
                       style: TextStyle(
                         color: Get.theme.primaryColor,
                         fontSize: Get.textTheme.titleMedium!.fontSize,
