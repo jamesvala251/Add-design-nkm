@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:nkm_admin_panel/api/auth_token_dio_client.dart';
 import 'package:nkm_admin_panel/api/dio_client.dart';
 import 'package:nkm_admin_panel/constants/common_constants.dart';
+import 'package:nkm_admin_panel/modules/add_design/models/hallmark_text_filed_model.dart';
 import 'package:nkm_admin_panel/modules/add_design/models/weights_text_field_model.dart';
 import 'package:nkm_admin_panel/modules/design/models/admin_get_settings_model.dart';
 import 'package:nkm_admin_panel/modules/design/models/category_model.dart';
@@ -17,6 +18,7 @@ import 'package:nkm_admin_panel/modules/login/models/login_model.dart';
 import 'package:nkm_admin_panel/modules/login/models/logout_model.dart';
 import 'package:nkm_admin_panel/modules/sub_category_design_details/models/sub_category_design_details_model.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/delete_media_model.dart';
+import 'package:nkm_admin_panel/modules/update_design/models/update_design_hallmark_model.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/update_design_image_model.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/update_design_model.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/update_design_video_model.dart';
@@ -96,6 +98,7 @@ class ApiImplementer {
     required int caret,
     required String quantity,
     required List<WeightsTextFieldModel> weightList,
+    required List<HallmarkTextFiledModel> hallmarkList,
     required List<CreateDesignImageModel> createDesignImageModelList,
     List<CreateDesignVideoModel>? createDesignVideoModelList,
   }) async {
@@ -117,6 +120,13 @@ class ApiImplementer {
         requestJson.putIfAbsent(
           'gold_carets[0][weight][$index]',
           () => weightList[index].weight.value,
+        );
+      }
+
+      for (int index = 0; index < hallmarkList.length; index++) {
+        requestJson.putIfAbsent(
+          'gold_carets[0][hallmark][$index]',
+              () => hallmarkList[index].hallmark.value,
         );
       }
 
@@ -157,6 +167,7 @@ class ApiImplementer {
     required int subCategoryId,
     required String designName,
     required List<UpdateDesignWeightModel> productWeightModelList,
+    required List<UpdateDesignHallmarkModel> updateDesignHallmarkModelList,
     required String dealerCommission,
     required String semiDealerCommission,
     required String shopkeeperCommission,
@@ -183,6 +194,13 @@ class ApiImplementer {
         requestJson.putIfAbsent(
           'design_weight[$index][weight]',
           () => productWeightModelList[index].weight.value,
+        );
+      }
+
+      for (int index = 0; index < updateDesignHallmarkModelList.length; index++) {
+        requestJson.putIfAbsent(
+          'design_weight[$index][hallmark]',
+              () => updateDesignHallmarkModelList[index].hallmark.value,
         );
       }
 

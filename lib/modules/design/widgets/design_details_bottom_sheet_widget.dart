@@ -296,7 +296,116 @@ class DesignDetailsBottomSheetWidget extends StatelessWidget {
                                                     .goldCaret
                                                     .first
                                                     .designWeight[index]
-                                                    .weight,
+                                                    .weight
+                                                    .toString(),
+                                                articleNumber: item
+                                                    .goldCaret
+                                                    .first
+                                                    .designWeight[index]
+                                                    .articleNumber,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : const SizedBox()
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12.0,
+                    ),
+                    IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'category'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize:
+                                        Get.textTheme.titleSmall!.fontSize,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 1,
+                                ),
+                                Text(
+                                  item.category.name,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize:
+                                        Get.textTheme.titleMedium!.fontSize,
+                                    fontWeight: FontWeight.w600,
+                                    color: Get.theme.primaryColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 1,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  Get.theme.primaryColor,
+                                  Get.theme.primaryColor,
+                                  Get.theme.primaryColor,
+                                  Get.theme.primaryColor,
+                                  Colors.transparent
+                                ],
+                                stops: const [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                            ),
+                          ),
+                          item.goldCaret.first.designWeight.isNotEmpty
+                              ? Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'hallmark'.tr,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: Get
+                                              .textTheme.titleSmall!.fontSize,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 1,
+                                      ),
+                                      SingleChildScrollView(
+                                        padding: EdgeInsets.zero,
+                                        physics: const BouncingScrollPhysics(),
+                                        scrollDirection: Axis.horizontal,
+                                        clipBehavior: Clip.hardEdge,
+                                        child: Row(
+                                          children: [
+                                            ...List.generate(
+                                              item.goldCaret.first.designWeight
+                                                  .length,
+                                              (index) =>
+                                                  _getChipForWeightWidget(
+                                                showWeight: false,
+                                                    designWeight: item
+                                                    .goldCaret
+                                                    .first
+                                                    .designWeight[index]
+                                                    .hallmark,
                                                 articleNumber: item
                                                     .goldCaret
                                                     .first
@@ -318,26 +427,19 @@ class DesignDetailsBottomSheetWidget extends StatelessWidget {
                       height: 12.0,
                     ),
                     _getChildRow(
-                      lbl1: 'category'.tr,
-                      value1: item.category.name,
-                      lbl2: 'sub_category'.tr,
-                      value2: item.subCategory.name,
+                      lbl1: 'sub_category'.tr,
+                      value1: item.subCategory.name,
+                      lbl2: 'dealer_commission'.tr,
+                      value2: item.dealerCommission,
                     ),
                     const SizedBox(
                       height: 12.0,
                     ),
                     _getChildRow(
-                      lbl1: 'dealer_commission'.tr,
-                      value1: item.dealerCommission,
-                      lbl2: 'semi_dealer_commission'.tr,
-                      value2: item.semiDealerCommission,
-                    ),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    _getSingleChildRow(
-                      lbl1: 'shopkeeper_commission'.tr,
-                      value1: item.shopkeeperCommission,
+                      lbl1: 'semi_dealer_commission'.tr,
+                      value1: item.semiDealerCommission,
+                      lbl2: 'shopkeeper_commission'.tr,
+                      value2: item.shopkeeperCommission,
                     ),
                     const SizedBox(
                       height: 12.0,
@@ -556,7 +658,9 @@ class DesignDetailsBottomSheetWidget extends StatelessWidget {
   }
 
   Card _getChipForWeightWidget(
-      {required int designWeight, required String articleNumber}) {
+      {required String designWeight,
+      required String articleNumber,
+      bool showWeight = true}) {
     return Card(
       elevation: 2,
       color: Get.theme.primaryColor,
@@ -584,7 +688,7 @@ class DesignDetailsBottomSheetWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 1,// Height of the divider
+                height: 1, // Height of the divider
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -604,21 +708,31 @@ class DesignDetailsBottomSheetWidget extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.balance_rounded,
-                    size: Get.textTheme.titleSmall!.fontSize,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(
-                    width: 2,
-                  ),
-                  Text(
-                    '$designWeight ${commonController.adminGetSettingsModel != null ? commonController.adminGetSettingsModel!.data.designWeightUnit : 'mg'}',
-                    style: TextStyle(
-                      fontSize: Get.textTheme.titleSmall!.fontSize,
+                  if (showWeight) ...[
+                    Icon(
+                      Icons.balance_rounded,
+                      size: Get.textTheme.titleSmall!.fontSize,
                       color: Colors.white,
                     ),
-                  ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                  ],
+                  showWeight
+                      ? Text(
+                          '$designWeight ${commonController.adminGetSettingsModel != null ? commonController.adminGetSettingsModel!.data.designWeightUnit : 'mg'}',
+                          style: TextStyle(
+                            fontSize: Get.textTheme.titleSmall!.fontSize,
+                            color: Colors.white,
+                          ),
+                        )
+                      : Text(
+                          designWeight,
+                          style: TextStyle(
+                            fontSize: Get.textTheme.titleSmall!.fontSize,
+                            color: Colors.white,
+                          ),
+                        ),
                 ],
               ),
             ],
@@ -718,44 +832,44 @@ class DesignDetailsBottomSheetWidget extends StatelessWidget {
     );
   }
 
-  IntrinsicHeight _getSingleChildRow({
-    required String lbl1,
-    required String value1,
-  }) {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  lbl1,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: Get.textTheme.titleSmall!.fontSize,
-                  ),
-                ),
-                const SizedBox(
-                  height: 1,
-                ),
-                Text(
-                  value1,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: Get.textTheme.titleMedium!.fontSize,
-                    fontWeight: FontWeight.w600,
-                    color: Get.theme.primaryColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+// IntrinsicHeight _getSingleChildRow({
+//   required String lbl1,
+//   required String value1,
+// }) {
+//   return IntrinsicHeight(
+//     child: Row(
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//       children: [
+//         Expanded(
+//           child: Column(
+//             mainAxisSize: MainAxisSize.min,
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//               Text(
+//                 lbl1,
+//                 textAlign: TextAlign.center,
+//                 style: TextStyle(
+//                   fontSize: Get.textTheme.titleSmall!.fontSize,
+//                 ),
+//               ),
+//               const SizedBox(
+//                 height: 1,
+//               ),
+//               Text(
+//                 value1,
+//                 textAlign: TextAlign.center,
+//                 style: TextStyle(
+//                   fontSize: Get.textTheme.titleMedium!.fontSize,
+//                   fontWeight: FontWeight.w600,
+//                   color: Get.theme.primaryColor,
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
 }

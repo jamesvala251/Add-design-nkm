@@ -1,9 +1,11 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:nkm_admin_panel/config/routes/app_routes.dart';
 import 'package:nkm_admin_panel/modules/add_design/screens/add_design_screen.dart';
+import 'package:nkm_admin_panel/modules/add_design/screens/enter_hallmark_screen.dart';
 import 'package:nkm_admin_panel/modules/add_design/screens/enter_weights_screen.dart';
 import 'package:nkm_admin_panel/modules/design/screens/filter_design_screen.dart';
 import 'package:nkm_admin_panel/modules/login/screens/login_screen.dart';
+import 'package:nkm_admin_panel/modules/update_design/screens/update_design_hallmark_screen.dart';
 import 'package:nkm_admin_panel/modules/update_design/screens/update_design_screen.dart';
 import 'package:nkm_admin_panel/modules/update_design/screens/update_design_weight_screen.dart';
 import 'package:nkm_admin_panel/utils/ui/device_image_view_screen.dart';
@@ -60,8 +62,16 @@ class AppScreens {
       page: () => const EnterWeightsScreen(),
     ),
     GetPage(
+      name: AppRoutes.enterHallmarksScreen,
+      page: () => const EnterHallmarkScreen(),
+    ),
+    GetPage(
       name: AppRoutes.updateDesignWeightsScreen,
       page: () => const UpdateDesignWeightScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.updateDesignHallmarkScreen,
+      page: () => const UpdateDesignHallmarkScreen(),
     ),
   ];
 }

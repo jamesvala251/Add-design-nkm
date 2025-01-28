@@ -68,6 +68,7 @@ class _UpdateDesignScreenState extends State<UpdateDesignScreen> {
               ...getSemiDealerCommissionTextFieldWidget(),
               getShopKeeperCommissionTextFieldWidget(),
               getWeightSelectionWidget(),
+              getHallmarkSelectionWidget(),
               getImageSelectionWidget(),
               getVideoSelectionWidget(),
             ],
@@ -1239,6 +1240,154 @@ class _UpdateDesignScreenState extends State<UpdateDesignScreen> {
                               Obx(
                                 () => Text(
                                   '${_updateDesignController.updateDesignWeightModelList[index].weight.value} ${_commonController.adminGetSettingsModel != null ? _commonController.adminGetSettingsModel!.data.designWeightUnit : 'mg'}',
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget getHallmarkSelectionWidget() {
+    return Card(
+      margin: const EdgeInsets.only(top: 24.0),
+      elevation: 0.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        side: BorderSide(color: Get.theme.primaryColor),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey.shade50,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      side: BorderSide(
+                        color: Get.theme.primaryColor,
+                      ),
+                    ),
+                  ),
+                  onPressed: () =>
+                      Get.toNamed(AppRoutes.updateDesignHallmarkScreen),
+                  child: Text(
+                    "Update Hallmark*",
+                    style: TextStyle(
+                      color: Get.theme.primaryColor,
+                      fontSize: Get.textTheme.titleMedium!.fontSize,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 8.0,
+                ),
+                Tooltip(
+                  margin: const EdgeInsets.only(left: 24.0, right: 24),
+                  triggerMode: TooltipTriggerMode.tap,
+                  enableFeedback: true,
+                  preferBelow: true,
+                  showDuration: const Duration(seconds: 2),
+                  decoration: BoxDecoration(
+                    color: Get.theme.primaryColor,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  message:
+                  'Note :- You are required to add a hallmark for each quantity you have entered.',
+                  child: Icon(
+                    Icons.info_rounded,
+                    color: Get.theme.primaryColor,
+                  ),
+                ),
+                const SizedBox(
+                  width: 12.0,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 8.0,
+            ),
+            Obx(
+                  () => SizedBox(
+                height: 46,
+                child: ListView.separated(
+                  separatorBuilder: (_, __) => const SizedBox(
+                    width: 8.0,
+                    height: 32,
+                  ),
+                  itemCount: _updateDesignController
+                      .updateDesignHallmarkModelList.length,
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (_, index) => Container(
+                    clipBehavior: Clip.hardEdge,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: Get.theme.primaryColor,
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    child: IntrinsicWidth(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _updateDesignController
+                                .updateDesignHallmarkModelList[index]
+                                .articleNumber,
+                            style: TextStyle(
+                              fontSize: Get.textTheme.titleSmall!.fontSize,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Container(
+                            height: 1, // Height of the divider
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.white,
+                                  Colors.transparent
+                                ],
+                                stops: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.balance_rounded,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                              const SizedBox(
+                                width: 6.0,
+                              ),
+                              Obx(
+                                    () => Text(
+                                  _updateDesignController.updateDesignHallmarkModelList[index].hallmark.value,
                                   style: const TextStyle(color: Colors.white),
                                 ),
                               )

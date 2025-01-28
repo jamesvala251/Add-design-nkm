@@ -17,4 +17,5 @@ class RouteConstants {
   static const String packageName = "package_name";
   static const String count = "count";
   static const String isWeightAvailable = "is_weight_available";
+  static const String isHallmarkAvailable = "is_hallmark_available";
 }

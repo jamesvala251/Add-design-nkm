@@ -8,6 +8,7 @@ import 'package:nkm_admin_panel/constants/common_constants.dart';
 import 'package:nkm_admin_panel/modules/add_design/models/create_design_image_model.dart';
 import 'package:nkm_admin_panel/modules/add_design/models/create_design_model.dart';
 import 'package:nkm_admin_panel/modules/add_design/models/create_design_video_model.dart';
+import 'package:nkm_admin_panel/modules/add_design/models/hallmark_text_filed_model.dart';
 import 'package:nkm_admin_panel/modules/add_design/models/weights_text_field_model.dart';
 import 'package:nkm_admin_panel/modules/design/controllers/common_controller.dart';
 import 'package:nkm_admin_panel/utils/helpers/custom_exception.dart';
@@ -61,6 +62,9 @@ class AddDesignController extends GetxController {
 
   final RxList<WeightsTextFieldModel> weights =
       RxList<WeightsTextFieldModel>([]);
+
+  final RxList<HallmarkTextFiledModel> hallmarks =
+      RxList<HallmarkTextFiledModel>([]);
 
   @override
   void onInit() {
@@ -216,6 +220,7 @@ class AddDesignController extends GetxController {
         caret: selectedGoldCaretId,
         quantity: quantityController.text,
         weightList: weights,
+        hallmarkList: hallmarks,
         createDesignImageModelList: createDesignImageModelList,
         createDesignVideoModelList: createDesignVideoModelList.isEmpty
             ? null

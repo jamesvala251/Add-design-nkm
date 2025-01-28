@@ -60,6 +60,7 @@ class _AddDesignScreenState extends State<AddDesignScreen> {
               ...getSelectGoldCaretWidget(),
               getDesignQtyTextFieldWidget(),
               getWeightSelectionWidget(),
+              getHallmarkSelectionWidget(),
               getImageSelectionWidget(),
               getVideoSelectionWidget(),
             ],
@@ -168,6 +169,13 @@ class _AddDesignScreenState extends State<AddDesignScreen> {
                       _addDesignController.weights.length) {
                     UiUtils.errorSnackBar(
                         message: 'Weight count should be same as Quantity!');
+                    return;
+                  } else if (int.parse(_addDesignController
+                          .quantityController.text
+                          .trim()) !=
+                      _addDesignController.hallmarks.length) {
+                    UiUtils.errorSnackBar(
+                        message: 'Hallmark count should be same as Quantity!');
                     return;
                   } else if (_addDesignController
                       .createDesignImageModelList.isEmpty) {
@@ -313,6 +321,138 @@ class _AddDesignScreenState extends State<AddDesignScreen> {
                               Obx(
                                 () => Text(
                                   '${_addDesignController.weights[index].weight.value} ${_commonController.adminGetSettingsModel != null ? _commonController.adminGetSettingsModel!.data.designWeightUnit : 'mg'}',
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget getHallmarkSelectionWidget() {
+    return Card(
+      margin: const EdgeInsets.only(top: 24.0),
+      elevation: 0.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        side: BorderSide(color: Get.theme.primaryColor),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey.shade50,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      side: BorderSide(
+                        color: Get.theme.primaryColor,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_addDesignController
+                            .quantityController.text.isNotEmpty &&
+                        _addDesignController.quantityController.text != "0") {
+                      Get.toNamed(AppRoutes.enterHallmarksScreen, arguments: {
+                        RouteConstants.count:
+                            _addDesignController.quantityController.text.trim(),
+                        RouteConstants.isHallmarkAvailable:
+                            _addDesignController.hallmarks.isNotEmpty
+                                ? true
+                                : false
+                      });
+                    } else {
+                      UiUtils.errorSnackBar(
+                          message: "Please Enter Quantity First");
+                    }
+                  },
+                  child: Text(
+                    "Add Hallmark*",
+                    style: TextStyle(
+                      color: Get.theme.primaryColor,
+                      fontSize: Get.textTheme.titleMedium!.fontSize,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 8.0,
+                ),
+                Tooltip(
+                  margin: const EdgeInsets.only(left: 24.0, right: 24),
+                  triggerMode: TooltipTriggerMode.tap,
+                  enableFeedback: true,
+                  preferBelow: true,
+                  showDuration: const Duration(seconds: 2),
+                  decoration: BoxDecoration(
+                    color: Get.theme.primaryColor,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  message:
+                      'Note :- You are required to add a hallmark for each quantity you have entered.',
+                  child: Icon(
+                    Icons.info_rounded,
+                    color: Get.theme.primaryColor,
+                  ),
+                ),
+                const SizedBox(
+                  width: 12.0,
+                ),
+              ],
+            ),
+            Obx(
+              () => SizedBox(
+                height: _addDesignController.hallmarks.isEmpty ? 0.0 : 8.0,
+              ),
+            ),
+            Obx(
+              () => _addDesignController.hallmarks.isEmpty
+                  ? const SizedBox()
+                  : SizedBox(
+                      height: 32,
+                      child: ListView.separated(
+                        separatorBuilder: (_, __) => const SizedBox(
+                          width: 8.0,
+                          height: 32,
+                        ),
+                        itemCount: _addDesignController.hallmarks.length,
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (_, index) => Container(
+                          clipBehavior: Clip.hardEdge,
+                          padding: const EdgeInsets.only(left: 14, right: 14),
+                          decoration: BoxDecoration(
+                            color: Get.theme.primaryColor,
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.balance_rounded,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                              const SizedBox(
+                                width: 6.0,
+                              ),
+                              Obx(
+                                () => Text(
+                                  _addDesignController
+                                      .hallmarks[index].hallmark.value,
                                   style: const TextStyle(color: Colors.white),
                                 ),
                               )
@@ -924,7 +1064,10 @@ class _AddDesignScreenState extends State<AddDesignScreen> {
 
   Widget getDesignQtyTextFieldWidget() {
     return TextFormField(
-      onChanged: (_) => _addDesignController.weights.clear(),
+      onChanged: (_) {
+        _addDesignController.weights.clear();
+        _addDesignController.hallmarks.clear();
+      },
       cursorColor: Get.theme.primaryColor,
       enableInteractiveSelection: false,
       controller: _addDesignController.quantityController,

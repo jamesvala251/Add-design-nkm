@@ -218,17 +218,21 @@ class Videos {
 class DesignWeight {
   late int _id;
   late int _weight;
+  late String _hallmark;
   late String _articleNumber;
 
   int get id => _id;
 
   int get weight => _weight;
 
+  String get hallmark => _hallmark;
+
   String get articleNumber => _articleNumber;
 
   DesignWeight.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
     _weight = json['weight'] ?? 0;
+    _hallmark = json['hallmark_number'] ?? '';
     _articleNumber = json['article_number'] ?? '';
   }
 }

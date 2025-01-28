@@ -15,6 +15,9 @@ class AppRoutes {
   static const String imageViewForDeviceScreen =
       '/Image-View-For-Device-Screen';
   static const String enterWeightsScreen = '/Enter-Weights-Screen';
+  static const String enterHallmarksScreen = '/Enter-Hallmarks-Screen';
   static const String updateDesignWeightsScreen =
       '/Update-Design-Weight-Screen';
+  static const String updateDesignHallmarkScreen =
+      '/Update-Design-Hallmark-Screen';
 }

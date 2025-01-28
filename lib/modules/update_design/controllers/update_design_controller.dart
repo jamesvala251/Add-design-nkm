@@ -7,6 +7,7 @@ import 'package:nkm_admin_panel/api/api_implementer.dart';
 import 'package:nkm_admin_panel/constants/common_constants.dart';
 import 'package:nkm_admin_panel/modules/design/controllers/common_controller.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/delete_media_model.dart';
+import 'package:nkm_admin_panel/modules/update_design/models/update_design_hallmark_model.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/update_design_image_model.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/update_design_model.dart';
 import 'package:nkm_admin_panel/modules/update_design/models/update_design_video_model.dart';
@@ -43,6 +44,10 @@ class UpdateDesignController extends GetxController {
   //for weights
   final RxList<UpdateDesignWeightModel> updateDesignWeightModelList =
       <UpdateDesignWeightModel>[].obs;
+
+  //for hallmark
+  final RxList<UpdateDesignHallmarkModel> updateDesignHallmarkModelList =
+      <UpdateDesignHallmarkModel>[].obs;
 
   final ImagePicker _imagePicker = ImagePicker();
 
@@ -88,6 +93,16 @@ class UpdateDesignController extends GetxController {
         UpdateDesignWeightModel(
           id: element.id,
           weightArg: element.weight,
+          articleNumber: element.articleNumber,
+        ),
+      );
+    }
+
+    for (var element in designListItemModel.goldCaret.first.designWeight) {
+      updateDesignHallmarkModelList.add(
+        UpdateDesignHallmarkModel(
+          id: element.id,
+          hallmarkArg: element.hallmark,
           articleNumber: element.articleNumber,
         ),
       );
@@ -275,6 +290,7 @@ class UpdateDesignController extends GetxController {
         subCategoryId: selectedSubCategoryId,
         designName: designNameController.text,
         productWeightModelList: updateDesignWeightModelList,
+        updateDesignHallmarkModelList: updateDesignHallmarkModelList,
         dealerCommission: dealerCommissionController.text,
         semiDealerCommission: semiDealerCommissionController.text,
         shopkeeperCommission: shopkeeperCommissionController.text,

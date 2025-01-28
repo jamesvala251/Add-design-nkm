@@ -4,6 +4,7 @@ class LocaleString extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          'hallmark': 'Hallmark',
           'welcome': 'Welcome,',
           'sign_in_to_continue': 'Sing in to continue!',
           'mobile_no': 'Mobile No.',
@@ -149,6 +150,7 @@ class LocaleString extends Translations {
           'design_image_videos': 'Design Images/Videos',
         },
         'hi_IN': {
+          'hallmark': 'Hallmark',
           'welcome': 'स्वागत है,',
           'sign_in_to_continue': 'जारी रखने के लिए साइन इन करें!',
           'mobile_no': 'मोबाइल नंबर',
